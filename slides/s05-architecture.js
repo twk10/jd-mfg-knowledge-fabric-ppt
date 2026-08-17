@@ -8,7 +8,7 @@ window.SLIDES = window.SLIDES || [];
     steps: 14,
     html:
       '<div style="display:flex;justify-content:space-between;align-items:flex-end">' +
-      '<div><h1 class="title" style="font-size:34px">The architecture, animated</h1></div>' +
+      '<div><h1 class="title" style="font-size:34px">How the architecture works</h1></div>' +
       '<div class="btnrow no-nav">' +
       '<button class="btn primary" id="btn-flow-a">\u25b6 Flow 1 \u00b7 teach</button>' +
       '<button class="btn" id="btn-flow-b">\u25b6 Flow 2 \u00b7 answer</button>' +
