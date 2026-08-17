@@ -1,0 +1,97 @@
+/* Thoughtworks design tokens — palette + typography per brand guide */
+:root{
+  --wave:#003D4F;
+  --wave-deep:#002B38;
+  --flamingo:#F2617A;
+  --turmeric:#CC850A;
+  --turmeric-lt:#E9A13B;   /* legibility tint for dark backgrounds */
+  --jade:#6B9E78;
+  --sapphire:#47A1AD;
+  --amethyst:#634F7D;
+  --amethyst-lt:#9B85C4;   /* legibility tint for dark backgrounds */
+  --mist:#EDF1F3;
+  --onyx:#000000;
+  --talc:#FFFFFF;
+  --ink:#15191C;
+  --grey:#5B6770;
+  --line:#D9E1E5;
+  --head:'Bitter',Georgia,'Times New Roman',serif;
+  --body:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:#0A1114;font-family:var(--body);color:var(--ink);overflow:hidden;
+     -webkit-font-smoothing:antialiased}
+
+#viewport{position:fixed;inset:0}
+#stage{position:absolute;top:50%;left:50%;width:1280px;height:720px;
+       transform:translate(-50%,-50%)}
+
+/* ---- Slide chrome ---- */
+.slide{position:absolute;inset:0;background:var(--talc);padding:60px 78px 84px;display:none}
+.slide.active{display:block}
+.slide.dark{background:var(--wave);color:var(--talc)}
+.slide.mist{background:var(--mist)}
+
+.kicker{font:600 13px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;
+        color:var(--flamingo);margin-bottom:16px}
+h1.title{font-family:var(--head);font-weight:700;font-size:44px;line-height:1.12;
+         color:var(--ink);max-width:1050px}
+.dark h1.title{color:var(--talc)}
+p.sub{font:600 19px/1.4 var(--body);color:var(--grey);margin-top:10px;max-width:980px}
+.dark p.sub{color:rgba(255,255,255,.78)}
+.lede{font:400 18px/1.55 var(--body);color:var(--ink);margin-top:16px;max-width:960px}
+.dark .lede{color:rgba(255,255,255,.88)}
+
+.chrome{position:absolute;left:78px;right:78px;bottom:26px;display:flex;
+        justify-content:space-between;font:400 11.5px/1 var(--body);color:#9AA6AC}
+.dark .chrome{color:rgba(255,255,255,.5)}
+
+.tw-logo{font:700 22px/1 var(--body);letter-spacing:-.01em;color:var(--wave)}
+.tw-logo i{font-style:normal;color:var(--flamingo)}
+.dark .tw-logo{color:var(--talc)}
+
+/* ---- Progress + HUD ---- */
+#progress{position:fixed;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.08);z-index:50}
+#progress-fill{height:100%;width:0;background:var(--flamingo);transition:width .35s ease}
+#hud{position:fixed;right:14px;bottom:12px;font:400 11px/1 var(--body);
+     color:rgba(255,255,255,.35);z-index:50;pointer-events:none}
+
+/* ---- Overview grid (Esc) ---- */
+#overview{position:fixed;inset:0;z-index:100;background:#02161C;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;padding:26px;
+  overflow-y:auto;align-content:start}
+.ov-item{cursor:pointer;min-width:0}
+.ov-thumb{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:8px;
+  background:var(--talc);border:2px solid rgba(255,255,255,.14);transition:border-color .15s}
+.ov-item:hover .ov-thumb,.ov-item.sel .ov-thumb{border-color:var(--flamingo)}
+.ov-thumb .slide{display:block;position:absolute;top:0;left:0;width:1280px;height:720px;
+  transform-origin:top left;pointer-events:none}
+.ov-label{font:600 12px/1.2 var(--body);color:rgba(255,255,255,.75);margin-top:8px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ov-item.sel .ov-label{color:var(--flamingo)}
+
+/* ---- Fragments (step reveals) ---- */
+.frag{opacity:0;transform:translateY(14px);transition:opacity .45s ease,transform .45s ease}
+.frag.on{opacity:1;transform:none}
+
+/* ---- Icons ---- */
+.icn{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;
+     stroke-linecap:round;stroke-linejoin:round;vertical-align:-.12em}
+
+::selection{background:var(--flamingo);color:#fff}
+
+/* ---- Print / PDF export ---- */
+@media print{
+  body{overflow:visible;background:#fff}
+  #viewport,#stage{position:static;width:auto;height:auto;transform:none!important}
+  .slide{display:block;position:relative;width:1280px;height:720px;
+         page-break-after:always;break-after:page;margin:0 auto}
+  #progress,#hud{display:none}
+  .frag{opacity:1;transform:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}

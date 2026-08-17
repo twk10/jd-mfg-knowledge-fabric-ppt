@@ -1,0 +1,55 @@
+/* Motion: architecture diagram flows + generic keyframes */
+
+@keyframes dashmove{to{stroke-dashoffset:-32}}
+@keyframes nodepulse{
+  0%{filter:drop-shadow(0 0 0px var(--ec,#F2617A))}
+  50%{filter:drop-shadow(0 0 9px var(--ec,#F2617A))}
+  100%{filter:drop-shadow(0 0 0px var(--ec,#F2617A))}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---- Diagram ---- */
+.arch-wrap{margin-top:8px}
+.arch-svg{max-width:100%;max-height:428px;height:auto;display:block;margin:0 auto}
+
+.arch-svg .zone-label{font:600 11.5px var(--body);letter-spacing:.14em;
+                      fill:var(--flamingo);text-transform:uppercase}
+.arch-svg .zone-line{stroke:rgba(255,255,255,.12);stroke-dasharray:2 5}
+
+.arch-svg .node rect,.arch-svg .node polygon{
+  fill:rgba(255,255,255,.045);stroke:var(--ec,#47A1AD);stroke-width:1.6;
+  transition:fill .35s ease,opacity .35s ease}
+.arch-svg .node{opacity:.34;transition:opacity .35s ease}
+.arch-svg .node .nt{font:600 14.5px var(--body);fill:#fff}
+.arch-svg .node .ns{font:400 10.5px var(--body);fill:rgba(255,255,255,.62)}
+.arch-svg .node .nicon{color:var(--ec,#47A1AD)}
+
+.arch-svg .node.lit{opacity:1}
+.arch-svg .node.lit rect,.arch-svg .node.lit polygon{fill:rgba(255,255,255,.09);
+  animation:nodepulse 1.6s ease-in-out infinite}
+.arch-svg .node.done{opacity:.85}
+.arch-svg .node.done rect,.arch-svg .node.done polygon{animation:none}
+
+.arch-svg .edge .wire{fill:none;stroke:rgba(255,255,255,.16);stroke-width:1.6}
+.arch-svg .edge .pulse{fill:none;stroke:var(--ec,#F2617A);stroke-width:2.4;
+  stroke-dasharray:7 11;opacity:0;transition:opacity .3s ease}
+.arch-svg .edge .dot{fill:var(--ec,#F2617A);opacity:0;transition:opacity .3s ease}
+.arch-svg .edge.live .pulse{opacity:1;animation:dashmove .8s linear infinite}
+.arch-svg .edge.live .dot{opacity:1}
+.arch-svg .edge.done .pulse{opacity:.4;animation:none}
+
+/* caption strip */
+.arch-cap{display:flex;align-items:center;gap:16px;margin-top:14px;min-height:58px;
+          background:rgba(255,255,255,.06);border-radius:10px;padding:12px 20px}
+.arch-cap .flowtag{flex:none;font:700 11.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;
+                   border-radius:14px;padding:7px 14px;color:#fff;background:var(--turmeric)}
+.arch-cap .flowtag.q{background:var(--sapphire)}
+.arch-cap .captext{font:400 15.5px/1.4 var(--body);color:rgba(255,255,255,.92);
+                   animation:fadeUp .4s ease}
+.arch-cap .idle{font:400 14.5px/1.4 var(--body);color:rgba(255,255,255,.55)}
+
+@media (prefers-reduced-motion:reduce){
+  .arch-svg .node.lit rect,.arch-svg .node.lit polygon{animation:none;
+    filter:drop-shadow(0 0 8px var(--ec,#F2617A))}
+  .arch-svg .edge.live .pulse{animation:none;stroke-dasharray:none}
+}
