@@ -6,7 +6,6 @@ window.SLIDES = window.SLIDES || [];
 
   window.SLIDES.push({
     id: 'cmp-retry',
-    kicker: 'Act 2 \u00b7 Better than a Google search',
     steps: 4,
     html:
       '<h1 class="title" style="font-size:30px">Round 1 \u2014 the same question, two answers</h1>' +

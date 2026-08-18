@@ -4,7 +4,6 @@ window.SLIDES = window.SLIDES || [];
   window.SLIDES.push({
     id: 'architecture',
     dark: true,
-    kicker: 'Act 1 \u00b7 The story',
     steps: 14,
     html:
       '<div style="display:flex;justify-content:space-between;align-items:flex-end">' +

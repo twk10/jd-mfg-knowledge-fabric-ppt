@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sign in &middot; Thoughtworks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --wave:#003D4F;--wave-deep:#002B38;--flamingo:#F2617A;--talc:#FFFFFF;
+      --ink:#15191C;--grey:#5B6770;--line:#D9E1E5;
+      --head:'Bitter',Georgia,serif;--body:'Inter','Helvetica Neue',Arial,sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:var(--body);color:var(--ink);
+      background:radial-gradient(1200px 600px at 20% -10%,#0a5566 0,var(--wave) 45%,var(--wave-deep) 100%);
+      display:flex;align-items:center;justify-content:center;padding:24px}
+    .card{width:100%;max-width:420px;background:var(--talc);border-radius:16px;
+      padding:44px 40px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+    .brand{font:700 24px/1 var(--body);letter-spacing:-.01em;color:var(--wave)}
+    .brand i{font-style:normal;color:var(--flamingo)}
+    .kicker{font:600 12px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;
+      color:var(--flamingo);margin:28px 0 10px}
+    h1{font-family:var(--head);font-weight:700;font-size:26px;line-height:1.15;color:var(--ink)}
+    p.sub{font:400 15px/1.5 var(--grey);margin-top:12px}
+    .note{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);
+      font:400 13px/1.5 var(--grey)}
+    .note b{color:var(--ink)}
+    .err{margin-top:20px;padding:12px 14px;border-radius:10px;background:#FDECEF;
+      color:#8A1C31;font:600 13px/1.4 var(--body)}
+    .hide{display:none}
+    label{display:block;margin-top:28px;font:600 13px/1 var(--body);color:var(--ink)}
+    input[type=email]{display:block;width:100%;margin-top:8px;padding:12px 14px;
+      border:1px solid var(--line);border-radius:10px;font:400 15px/1 var(--body);color:var(--ink)}
+    input[type=email]:focus{outline:2px solid var(--wave);outline-offset:1px}
+    .btn{display:flex;align-items:center;justify-content:center;width:100%;
+      margin-top:16px;padding:13px 16px;border:none;border-radius:10px;
+      background:var(--wave);color:var(--talc);font:600 15px/1 var(--body);
+      cursor:pointer;transition:box-shadow .15s ease,transform .05s ease}
+    .btn:hover{box-shadow:0 4px 16px rgba(0,0,0,.25)}
+    .btn:active{transform:translateY(1px)}
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <div class="brand">Thoughtworks<i>.</i></div>
+    <div class="kicker">Restricted presentation</div>
+    <h1>Beyond search: a payments knowledge agent</h1>
+    <p class="sub">This deck is available to Thoughtworks employees only. Enter your Thoughtworks email to continue.</p>
+
+    <div id="err" class="err hide"></div>
+
+    <form method="POST" action="/login">
+      <label for="email">Work email</label>
+      <input type="email" id="email" name="email" placeholder="you@thoughtworks.com" autocomplete="email" autofocus required>
+      <button type="submit" class="btn">Continue</button>
+    </form>
+
+    <div class="note">Access is limited to <b>@thoughtworks.com</b> email addresses.</div>
+  </main>
+
+  <script>
+    // Surface login error hints passed back as ?error=... (no secrets involved).
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var code = params.get('error');
+      if (!code) return;
+      var msg = {
+        invalid: 'Please enter a valid email address.',
+        domain: 'Access is limited to @thoughtworks.com email addresses.'
+      }[code] || 'Sign-in failed. Please try again.';
+      var el = document.getElementById('err');
+      el.textContent = msg;
+      el.classList.remove('hide');
+    })();
+  </script>
+</body>
+</html>
+

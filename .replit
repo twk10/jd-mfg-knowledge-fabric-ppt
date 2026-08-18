@@ -1,0 +1,19 @@
+run = "npm install --no-audit --no-fund && npm start"
+entrypoint = "server.js"
+modules = ["nodejs-20"]
+hidden = ["node_modules", ".config"]
+
+[nix]
+channel = "stable-24_05"
+
+[env]
+PORT = "3000"
+
+[[ports]]
+localPort = 3000
+externalPort = 80
+
+[deployment]
+deploymentTarget = "autoscale"
+build = ["npm", "install", "--no-audit", "--no-fund"]
+run = ["npm", "start"]

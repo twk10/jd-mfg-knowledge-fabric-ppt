@@ -13,7 +13,7 @@
     el.innerHTML =
       (s.kicker ? '<div class="kicker">' + s.kicker + '</div>' : '') +
       s.html +
-      '<footer class="chrome"><span>&copy; 2026 Thoughtworks | Restricted</span>' +
+      '<footer class="chrome"><span>&copy; 2026 Thoughtworks</span>' +
       '<span>' + (i + 1) + ' / ' + slides.length + '</span></footer>';
     stage.appendChild(el);
     els.push(el);

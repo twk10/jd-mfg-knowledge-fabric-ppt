@@ -1,7 +1,6 @@
 window.SLIDES = window.SLIDES || [];
 window.SLIDES.push({
   id: 'scoreboard',
-  kicker: 'Act 2 \u00b7 Better than a Google search',
   html:
     '<div class="cols wl" style="margin-top:0;align-items:center;height:82%">' +
     '<div>' +

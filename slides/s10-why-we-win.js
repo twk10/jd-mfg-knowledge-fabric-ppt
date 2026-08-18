@@ -1,7 +1,6 @@
 window.SLIDES = window.SLIDES || [];
 window.SLIDES.push({
   id: 'why-win',
-  kicker: 'Act 2 \u00b7 Better than a Google search',
   html:
     '<h1 class="title">Why the agent wins</h1>' +
     '<p class="sub">Not by knowing more than the internet \u2014 by knowing <i>our</i> corner of it perfectly.</p>' +

@@ -1,0 +1,19 @@
+{
+  "name": "jd-mfg-knowledge-fabric-ppt",
+  "version": "1.0.0",
+  "description": "Thoughtworks knowledge-fabric presentation, gated behind an @thoughtworks.com email/domain check.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "dependencies": {
+    "cookie-session": "^2.1.1",
+    "express": "^4.19.2"
+  }
+}

@@ -6,7 +6,6 @@ window.SLIDES = window.SLIDES || [];
 
   window.SLIDES.push({
     id: 'cmp-events',
-    kicker: 'Act 2 \u00b7 Better than a Google search',
     steps: 4,
     html:
       '<h1 class="title" style="font-size:30px">Round 2 \u2014 when completeness matters</h1>' +
